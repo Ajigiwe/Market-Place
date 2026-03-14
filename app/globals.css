@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", "system-ui", "sans-serif";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #020617;
+  --card: #ffffff;
+  --card-foreground: #020617;
+  --popover: #ffffff;
+  --popover-foreground: #020617;
+  --primary: #1e40af;
+  --primary-foreground: #ffffff;
+  --secondary: #eff6ff;
+  --secondary-foreground: #1e3a8a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #1e40af;
+  --radius: 1.5rem;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f0f9ff;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #38bdf8;
+  --primary-foreground: #020617;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #38bdf8;
+  --accent-foreground: #020617;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ffffff;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #38bdf8;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    background-image: radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.03) 0, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.03) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Premium Vibrancy Utilities */
+.glass-effect {
+  @apply bg-background/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.vibrant-shadow {
+  box-shadow: 0 10px 40px -10px rgba(30, 64, 175, 0.2);
+}
+
+.mesh-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.05) 0%, transparent 100%),
+              radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.05) 0%, transparent 100%);
+}
+
+.standard-card {
+  @apply bg-card text-card-foreground p-6 rounded-3xl border border-border/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+}
+
+.inverted-section {
+  @apply bg-primary text-primary-foreground relative overflow-hidden;
+  background-image: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+}
+
+.inverted-section::after {
+  content: '';
+  @apply absolute inset-0 opacity-20 pointer-events-none;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-foreground font-extrabold tracking-tight;
+}
+
+p {
+  @apply text-muted-foreground font-medium;
+}
+
+input, select, textarea {
+  @apply bg-background/50 text-foreground border-border rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-ring outline-none transition-all placeholder:text-muted-foreground/30;
+}
+
+button:not(.pill-btn) {
+  @apply active:scale-[0.98] transition-all;
+}
+
+.pill-btn {
+  @apply px-6 py-3 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-full font-black text-xs sm:text-sm uppercase tracking-widest shadow-2xl shadow-primary/20 transition-all hover:scale-[1.05] hover:shadow-primary/30 active:scale-[0.98];
+}
+
+@keyframes progress-shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.animate-progress-shrink {
+  animation: progress-shrink 2s linear forwards;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 20px 20px;
+}
