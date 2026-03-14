@@ -51,15 +51,32 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
               >
                 <Package className="w-4 h-4" />
-                <span className="hidden sm:inline">Orders</span>
+                <span className="hidden lg:inline">Orders</span>
               </Link>
+              {((session?.user as any)?.role === "SELLER" || (session?.user as any)?.role === "ADMIN") ? (
+                <Link
+                  href="/dashboard/seller"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-foreground hover:bg-muted transition-all"
+                >
+                  <Store className="w-4 h-4 text-primary" />
+                  <span className="hidden lg:inline">Seller Dash</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/sell"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-foreground hover:bg-muted transition-all"
+                >
+                  <Store className="w-4 h-4" />
+                  <span className="hidden lg:inline">Start Selling</span>
+                </Link>
+              )}
               {(session?.user as any)?.role === "ADMIN" && (
                 <Link
                   href="/dashboard/admin"
                   className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-primary hover:bg-primary/10 transition-all border border-primary/20"
                 >
                   <ShieldAlert className="w-4 h-4" />
-                  <span className="hidden sm:inline">Admin Panel</span>
+                  <span className="hidden lg:inline">Admin Panel</span>
                 </Link>
               )}
               <button
