@@ -1,5 +1,5 @@
-import { db } from "./lib/db";
-import { categories } from "./lib/schema";
+import { db } from "./db";
+import { categories } from "./schema";
 
 async function seed() {
   console.log("Seeding categories...");
