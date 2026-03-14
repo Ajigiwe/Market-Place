@@ -56,14 +56,15 @@ export default async function NewProductPage() {
             </div>
 
             <div>
-              <label htmlFor="image" className="block text-sm font-medium text-foreground mb-2">Product Image (Optional)</label>
+              <label htmlFor="image" className="block text-sm font-medium text-foreground mb-2">Product Image URL (Optional)</label>
               <input
                 id="image"
                 name="image"
-                type="file"
-                accept="image/*"
-                className="block w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
+                type="text"
+                placeholder="https://example.com/image.jpg"
+                className="block w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm"
               />
+              <p className="mt-1 text-xs text-muted-foreground">Provide a link to the product image.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
